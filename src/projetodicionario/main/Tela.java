@@ -8,6 +8,7 @@ import java.lang.ref.Cleaner;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
+import projetodicionario.ordination.Ordenation;
 
 /**
  * InputMismatchException
@@ -19,6 +20,7 @@ public class Tela {
     public static void main(String[] args) throws Exception {
         int userInput;
         String dictionary;
+        Ordenation ordenation = new Ordenation();
         Scanner sc = new Scanner(System.in);
         try {
             System.out.println("--------------------------Olá Humano!--------------------------");

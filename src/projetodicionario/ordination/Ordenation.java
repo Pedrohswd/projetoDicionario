@@ -4,6 +4,8 @@
  */
 package projetodicionario.ordination;
 
+import projetodicionario.tools.Tools;
+
 /**
  *
  * @author pedro
@@ -19,7 +21,7 @@ public class Ordenation {
     }
 
     public void mergeSort() {
-
+        
     }
 
     public void quickSort() {
