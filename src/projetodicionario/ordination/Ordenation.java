@@ -12,20 +12,20 @@ import projetodicionario.tools.Tools;
  */
 public class Ordenation {
 
-    public void selectionSort() {
-
+    public String[] selectionSort(String[] palavra) {
+        return palavra;
     }
 
-    public void insertionSort() {
-
+    public String[] insertionSort(String[] palavra) {
+        return palavra;
     }
 
-    public void mergeSort() {
-        
+    public String[] mergeSort(String[] palavra) {
+        return palavra;
     }
 
-    public void quickSort() {
-
+    public String[] quickSort(String[] palavra) {
+        return palavra;
     }
 
 }
