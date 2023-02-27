@@ -78,6 +78,15 @@ public class Tela {
             System.out.println("--------------------------Ok!--------------------------");
             System.out.print("Digite agora 10 palavras que você deseja buscar no dicionário: ");
             String[] plavrasBuscadas = new String[10];
+            for (int i = 0; i < 10; i++) {
+                plavrasBuscadas[i] = sc.next();
+            }
+            System.out.println("-----------------------Beleza meu compatriota!-----------------------");
+            System.out.print("Agora escolha o método de busca a ser utilizado: ");
+            System.out.print("1- Sequencial");
+            System.out.print("2- Binária ");
+            System.out.println("Digite sua escolha");
+            userInput = sc.nextInt();
 
         } catch (InputMismatchException erro) {
             JOptionPane.showMessageDialog(null, "Digite apenas números");
