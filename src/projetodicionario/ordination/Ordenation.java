@@ -13,6 +13,23 @@ import projetodicionario.tools.Tools;
 public class Ordenation {
 
     public String[] selectionSort(String[] palavra) {
+         Tools tools = new Tools();
+        for (int i = 0; i < palavra.length - 2; i++) {
+            int indicador = i;
+
+            for (int p = i + 1; p < palavra.length - 1; p++) {
+                String palavraIndicador = palavra[indicador];
+                int palavraIndic = tools.characterCounter(palavraIndicador);
+                int palavraP = tools.characterCounter(palavra[p]);
+                if (palavraP < palavraIndic) {
+                    indicador = p;
+                }
+            }
+            String menorPalavra = palavra[indicador];
+            palavra[indicador] = palavra[i];
+            palavra[i] = menorPalavra;
+        }
+
         return palavra;
     }
 

@@ -9,5 +9,15 @@ package projetodicionario.search;
  * @author pedro
  */
 public class Search {
+     public static boolean BuscaSequencial(String[] vetor, String palavraBuscada) {
+
+        int i;
+        for (i = 0; i < vetor.length; i++) {
+            if (palavraBuscada == vetor[i]) {
+                return true;
+            }
+        }
+        return false;
+     }
     
 }
