@@ -4,9 +4,6 @@
  */
 package projetodicionario.main;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import projetodicionario.tools.Tools;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -42,7 +39,7 @@ public class Tela {
                 System.out.println("Dicionário PT-BR");
                 dictionary = "./src/projetodicionario/dictionary/PT-BR.txt";
                 palavras = new String[307374];
-                qtd = 307347;
+                qtd = 307374;
             } else {
                 System.out.println("Dicionário ING-EUA");
                 dictionary = "./src/projetodicionario/dictionary/EN-US.txt";
@@ -71,7 +68,7 @@ public class Tela {
                     palavras = ordenation.insertionSort(palavras);
                     break;
                 case 3:
-                    palavras = ordenation.mergeSort(palavras);
+                    palavras = ordenation.mergeSort(palavras, 0, qtd-1);
                     break;
                 case 4:
                     palavras = ordenation.selectionSort(palavras);
