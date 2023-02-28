@@ -22,6 +22,7 @@ public class Tela {
         int userInput;
         String dictionary;
         Ordenation ordenation = new Ordenation();
+        Search search = new Search();
         Scanner sc = new Scanner(System.in);
         Tools tool = new Tools();
         String[] palavras;
@@ -71,7 +72,7 @@ public class Tela {
                     palavras = ordenation.mergeSort(palavras, 0, qtd-1);
                     break;
                 case 4:
-                    palavras = ordenation.selectionSort(palavras);
+                    palavras = ordenation.quickSort(palavras, 0, qtd-1);
                     break;
                 default:
                     throw new AssertionError();
@@ -80,6 +81,7 @@ public class Tela {
             long nf = System.nanoTime(); // tempo final em nanoseg.
             long dt = tf-ti; // delta T miliseg.
             long nt = nf-ni; // delta T nanoseg.
+            tool.writeTxt(palavras);
             
             if(dt == 0) System.out.println("-----------Essa Ordenação Demorou " + nt+" nanosegundos-----------");
             else System.out.println("-----------Essa Ordenação Demorou " + dt+" milisegundos-----------");
@@ -101,9 +103,9 @@ public class Tela {
             ni = System.nanoTime();
             switch(userInput){
                 case 1:
-                    Search.BuscaSequencial(palavras, dictionary);
+                    search.BuscaSequencial(palavras, dictionary);
                     
-                    if(Search.BuscaSequencial(args, dictionary)==true) System.out.println("As palavras foram encontradas");
+                    if(search.BuscaSequencial(args, dictionary)==true) System.out.println("As palavras foram encontradas");
                     else System.out.println("As palavras não foram encontradas");
                     
                     // MEDIÇÃO DO TEMPO NA BUSCA SEQUENCIAL
@@ -115,9 +117,9 @@ public class Tela {
                     if(dt == 0) System.out.println("-----------Essa Ordenação Demorou " + nt+" nanosegundos-----------");
                     else System.out.println("-----------Essa Ordenação Demorou " + dt+" milisegundos-----------");
                 case 2:
-                    Search.BuscaBinaria(palavras, dictionary, 1, qtd);
+                    search.BuscaBinaria(palavras, dictionary, 1, qtd);
                     
-                     if(Search.BuscaBinaria(args, dictionary, qtd, qtd)==true) System.out.println("As palavras foram encontradas");
+                     if(search.BuscaBinaria(args, dictionary, qtd, qtd)==true) System.out.println("As palavras foram encontradas");
                     else System.out.println("As palavras não foram encontradas");
                     // MEDIÇÃO DO TEMPO NA BUSCA BINARIA
                     tf = System.currentTimeMillis();

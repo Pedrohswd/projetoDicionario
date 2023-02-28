@@ -5,8 +5,11 @@
 package projetodicionario.tools;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,15 +21,13 @@ public class Tools {
         int tamanho = 0;
 
         for (int i = 0; i < palavra.length(); i++) {
-            if (Character.isLetter(palavra.charAt(i))) {
-                tamanho++;
-            }
+            tamanho++;
         }
 
         return tamanho;
     }
 
-    public static String[] readTxt(String[] palavras, String nomeArquivo) {
+    public String[] readTxt(String[] palavras, String nomeArquivo) {
 
         try ( BufferedReader br = new BufferedReader(new FileReader(nomeArquivo))) {
             int i = 0;
@@ -40,5 +41,43 @@ public class Tools {
             System.out.println("Erro ao ler o arquivo: " + e.getMessage());
         }
         return palavras;
+    }
+
+    public void writeTxt(String[] palavra) {
+        String arquivo = "./src/projetodicionario/dictionary/Saida.txt";
+        try {
+            clearTxt(arquivo);
+            FileWriter fw = new FileWriter(arquivo);
+            BufferedWriter bw = new BufferedWriter(fw);
+            for (int i = 0; i < palavra.length; i++) {
+                bw.write(palavra[i]);
+                bw.newLine();
+            }
+            bw.close();
+            fw.close();
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao imprimir a saida");
+            e.printStackTrace();
+        }
+    }
+
+    public void clearTxt(String arquivo) {
+        try {
+            //Cria o objeto FileWriter com o parâmetro 'false' para não acrescentar ao arquivo
+            FileWriter fw = new FileWriter(arquivo, false);
+
+            //Escreve uma string vazia no arquivo para limpar todo o conteúdo anterior
+            fw.write("");
+
+            //Fecha o FileWriter
+            fw.close();
+
+            System.out.println("Arquivo limpo com sucesso!");
+
+        } catch (IOException e) {
+            System.out.println("Erro ao limpar o arquivo!");
+            e.printStackTrace();
+        }
     }
 }

@@ -10,7 +10,7 @@ package projetodicionario.search;
  */
 public class Search {
 
-    public static boolean BuscaSequencial(String[] vetor, String palavraBuscada) {
+    public boolean BuscaSequencial(String[] vetor, String palavraBuscada) {
 
         int i;
         for (i = 0; i < vetor.length; i++) {
@@ -21,7 +21,7 @@ public class Search {
         return false;
     }
 
-    public static boolean BuscaBinaria(String[] vetor, String palavraBuscada, int inicio, int fim) {
+    public boolean BuscaBinaria(String[] vetor, String palavraBuscada, int inicio, int fim) {
         int meio;
         if (inicio > fim) {
             return false;

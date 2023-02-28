@@ -49,7 +49,7 @@ public class Ordenation {
         return palavra;
     }
 
-    public static String[] mergeSort(String[] palavra, int start, int end) {
+    public String[] mergeSort(String[] palavra, int start, int end) {
         if (start < end) {
             int middle = (start + end) / 2;
             mergeSort(palavra, start, middle);
@@ -59,7 +59,7 @@ public class Ordenation {
         return palavra;
     }
 
-    private static String[] merge(String[] palavra, int start, int middle, int end) {
+    private String[] merge(String[] palavra, int start, int middle, int end) {
         Tools tools = new Tools();
         int leftLength = middle - start + 1;
         int rightLength = end - middle;
@@ -105,15 +105,16 @@ public class Ordenation {
         return palavra;
     }
 
-    public static void quickSort(String[] palavra, int left, int right) {
+    public String[] quickSort(String[] palavra, int left, int right) {
         if (left < right) {
             int pivotIndex = partition(palavra, left, right);
             quickSort(palavra, left, pivotIndex - 1);
             quickSort(palavra, pivotIndex + 1, right);
         }
+        return palavra;
     }
 
-    private static int partition(String[] palavra, int left, int right) {
+    private int partition(String[] palavra, int left, int right) {
         Tools tools = new Tools();
         int pivot = tools.characterCounter(palavra[right]);
         int i = left - 1;
@@ -131,7 +132,7 @@ public class Ordenation {
         return i + 1;
     }
 
-    private static void swap(String[] palavra, int i, int j) {
+    private  void swap(String[] palavra, int i, int j) {
         String temp = palavra[i];
         palavra[i] = palavra[j];
         palavra[j] = temp;
