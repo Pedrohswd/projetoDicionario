@@ -19,5 +19,12 @@ public class Search {
         }
         return false;
      }
-    
+    public static boolean BuscaBinaria(String []vetor, String palavraBuscada, int inicio, int fim){
+        int meio;
+        if(inicio>fim) return false;
+        meio = (inicio+fim)/2;
+        if(palavraBuscada == vetor[meio]) return true;
+        else if (palavraBuscada.compareTo(vetor[meio])== -1) return(BuscaBinaria(vetor,palavraBuscada,inicio,meio-1));
+        else return(BuscaBinaria(vetor,palavraBuscada,meio+1,fim));
+    }
 }
