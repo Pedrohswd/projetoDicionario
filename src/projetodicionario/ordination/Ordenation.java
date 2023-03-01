@@ -34,16 +34,14 @@ public class Ordenation {
     }
 
     public String[] insertionSort(String[] palavra) {
-        Tools tools = new Tools();
-        for (int i = 1; i < palavra.length; i++) {
-            int current = tools.characterCounter(palavra[i]);
-            int j = i - 1;
-            int palavraJ = tools.characterCounter(palavra[j]);
-            while (j > 0 && palavraJ > current) {
-                palavra[j + 1] = palavra[j];
-                j--;
+        for (int i = 0; i < palavra.length; i++) {
+            String aux = palavra[i];
+            int j = i;
+            while (j > 0 && palavra[j - 1].length() > aux.length()) {
+                palavra[j] = palavra[j - 1];
+                j -= 1;
             }
-            palavra[j + 1] = palavra[i];
+            palavra[j] = aux;
         }
 
         return palavra;

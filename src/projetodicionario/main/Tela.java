@@ -39,17 +39,18 @@ public class Tela {
             if (userInput == 1) {
                 System.out.println("Dicionário PT-BR");
                 dictionary = "./src/projetodicionario/dictionary/PT-BR.txt";
-                palavras = new String[307374];
                 qtd = 307374;
+                palavras = new String[qtd];
+
             } else {
                 System.out.println("Dicionário ING-EUA");
                 dictionary = "./src/projetodicionario/dictionary/EN-US.txt";
-                palavras = new String[48447];
                 qtd = 48447;
+                palavras = new String[qtd];
+
             }
 
             palavras = tool.readTxt(palavras, dictionary);
-            System.out.println(palavras[5]);
             System.out.println("--------------------------Prontinho!--------------------------");
             System.out.println("Defina o método de ordenação:\n");
             System.out.println("1 - SelectionSort");
@@ -63,24 +64,24 @@ public class Tela {
             long ni;
             switch (userInput) {
                 case 1:
-                    palavras = ordenation.selectionSort(palavras);
                     ti = System.currentTimeMillis(); // tempo inicial em miliseg.
                     ni = System.nanoTime(); // tempo inicial em nanoseg.
+                    palavras = ordenation.selectionSort(palavras);
                     break;
                 case 2:
-                    palavras = ordenation.insertionSort(palavras);
                     ti = System.currentTimeMillis(); // tempo inicial em miliseg.
                     ni = System.nanoTime(); // tempo inicial em nanoseg.
+                    palavras = ordenation.insertionSort(palavras);
                     break;
                 case 3:
-                    palavras = ordenation.mergeSort(palavras, 0, qtd - 1);
                     ti = System.currentTimeMillis(); // tempo inicial em miliseg.
                     ni = System.nanoTime(); // tempo inicial em nanoseg.
+                    palavras = ordenation.mergeSort(palavras, 0, qtd - 1);
                     break;
                 case 4:
-                    palavras = ordenation.quickSort(palavras, qtd, qtd);
                     ti = System.currentTimeMillis(); // tempo inicial em miliseg.
                     ni = System.nanoTime(); // tempo inicial em nanoseg.
+                    palavras = ordenation.quickSort(palavras, qtd, qtd);
                     break;
                 default:
                     throw new AssertionError();
