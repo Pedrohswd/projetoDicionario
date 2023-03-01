@@ -4,35 +4,65 @@
  */
 package projetodicionario.search;
 
+import projetodicionario.tools.Tools;
+
 /**
  *
  * @author pedro
  */
 public class Search {
 
-    public boolean BuscaSequencial(String[] vetor, String palavraBuscada) {
+    Tools tool = new Tools();
 
-        int i;
-        for (i = 0; i < vetor.length; i++) {
+    /*public int sequential(String[] vetor, String palavraBuscada) throws Exception {
+
+        for (int i = 0; i < vetor.length; i++) {
             if (palavraBuscada == vetor[i]) {
-                return true;
+                return i;
             }
         }
-        return false;
+        return 0;
+    }*/
+    public int sequential(String[] vetor, String word) throws Exception {
+        for (int i = 0; i < vetor.length; i++) {
+            if (vetor[i].equalsIgnoreCase(word)) {
+                return i;
+            }
+        }
+        throw new Exception("Element not found!");
     }
 
-    public boolean BuscaBinaria(String[] vetor, String palavraBuscada, int inicio, int fim) {
-        int meio;
-        if (inicio > fim) {
-            return false;
+    public int binary(String[] array, String word, int start, int end) throws Exception {
+        if (start > end) {
+            throw new Exception("Element not found!");
         }
-        meio = (inicio + fim) / 2;
-        if (palavraBuscada == vetor[meio]) {
-            return true;
-        } else if (palavraBuscada.compareTo(vetor[meio]) == -1) {
-            return (BuscaBinaria(vetor, palavraBuscada, inicio, meio - 1));
+
+        int middle = (start + end) / 2;
+        if (word.length() == array[middle].length()) {
+            if (word.equals(array[middle])) {
+                return middle;
+            } else {
+                int i = middle;
+                while (word.length() == array[i].length()) {
+                    i++;
+                    if (word.equals(array[i])) {
+                        return i;
+                    }
+                }
+                i = middle;
+                while (word.length() == array[i].length()) {
+                    i--;
+                    if (word.equals(array[i])) {
+                        return i;
+                    }
+                }
+            }
+        } else if (word.length() < array[middle].length()) {
+            return binary(array, word, start, (middle - 1));
         } else {
-            return (BuscaBinaria(vetor, palavraBuscada, meio + 1, fim));
+            return binary(array, word, (middle + 1), end);
         }
+
+        throw new Exception("Element not found!");
     }
 }
