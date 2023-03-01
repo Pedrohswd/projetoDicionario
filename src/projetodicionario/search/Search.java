@@ -23,35 +23,35 @@ public class Search {
         return -1;
     }
 
-    public int binary(String[] array, String word, int start, int end) throws Exception {
+    public int binary(String[] palavra, String word, int start, int end) throws Exception {
         if (start > end) {
-            throw new Exception("Element not found!");
+            return -1;
         }
 
         int middle = (start + end) / 2;
-        if (word.length() == array[middle].length()) {
-            if (word.equals(array[middle])) {
+        if (word.length() == palavra[middle].length()) {
+            if (word.equals(palavra[middle])) {
                 return middle;
             } else {
                 int i = middle;
-                while (word.length() == array[i].length()) {
+                while (word.length() == palavra[i].length()) {
                     i++;
-                    if (word.equals(array[i])) {
+                    if (word.equals(palavra[i])) {
                         return i;
                     }
                 }
                 i = middle;
-                while (word.length() == array[i].length()) {
+                while (word.length() == palavra[i].length()) {
                     i--;
-                    if (word.equals(array[i])) {
+                    if (word.equals(palavra[i])) {
                         return i;
                     }
                 }
             }
-        } else if (word.length() < array[middle].length()) {
-            return binary(array, word, start, (middle - 1));
+        } else if (word.length() < palavra[middle].length()) {
+            return binary(palavra, word, start, (middle - 1));
         } else {
-            return binary(array, word, (middle + 1), end);
+            return binary(palavra, word, (middle + 1), end);
         }
 
         return -1;

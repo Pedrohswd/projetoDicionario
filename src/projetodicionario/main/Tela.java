@@ -81,7 +81,7 @@ public class Tela {
                 case 4:
                     ti = System.currentTimeMillis(); // tempo inicial em miliseg.
                     ni = System.nanoTime(); // tempo inicial em nanoseg.
-                    palavras = ordenation.quickSort(palavras, qtd, qtd);
+                    palavras = ordenation.quickSort(palavras, 0, qtd - 1);
                     break;
                 default:
                     throw new AssertionError();
