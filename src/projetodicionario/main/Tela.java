@@ -59,20 +59,28 @@ public class Tela {
             System.out.print("Digite o número referente ao dicionário desejado: ");
             userInput = sc.nextInt();
 
-            long ti = System.currentTimeMillis(); // tempo inicial em miliseg.
-            long ni = System.nanoTime(); // tempo inicial em nanoseg.
+            long ti;
+            long ni;
             switch (userInput) {
                 case 1:
                     palavras = ordenation.selectionSort(palavras);
+                    ti = System.currentTimeMillis(); // tempo inicial em miliseg.
+                    ni = System.nanoTime(); // tempo inicial em nanoseg.
                     break;
                 case 2:
                     palavras = ordenation.insertionSort(palavras);
+                    ti = System.currentTimeMillis(); // tempo inicial em miliseg.
+                    ni = System.nanoTime(); // tempo inicial em nanoseg.
                     break;
                 case 3:
                     palavras = ordenation.mergeSort(palavras, 0, qtd - 1);
+                    ti = System.currentTimeMillis(); // tempo inicial em miliseg.
+                    ni = System.nanoTime(); // tempo inicial em nanoseg.
                     break;
                 case 4:
                     palavras = ordenation.quickSort(palavras, qtd, qtd);
+                    ti = System.currentTimeMillis(); // tempo inicial em miliseg.
+                    ni = System.nanoTime(); // tempo inicial em nanoseg.
                     break;
                 default:
                     throw new AssertionError();
@@ -102,16 +110,17 @@ public class Tela {
             System.out.println("Digite sua escolha");
             userInput = sc.nextInt();
 
-            ti = System.currentTimeMillis();
-            ni = System.nanoTime();
             switch (userInput) {
                 case 1:
+                    ti = System.currentTimeMillis();
+                    ni = System.nanoTime();
                     for (int i = 0; i < 10; i++) {
                         int palavra = search.sequential(palavras, palavrasBuscadas[i]);
                         if (palavra != -1) {
                             System.out.println("A palavra " + palavras[palavra] + " foi encontrada");
                         } else {
-                            System.out.println("A palavra " + palavrasBuscadas[i] + " não foi encontrada no dicionário");
+                            System.out
+                                    .println("A palavra " + palavrasBuscadas[i] + " não foi encontrada no dicionário");
                         }
                     }
 
@@ -128,13 +137,16 @@ public class Tela {
                     }
 
                 case 2:
+                    ti = System.currentTimeMillis();
+                    ni = System.nanoTime();
                     for (int i = 0; i < 10; i++) {
                         int palavra = search.binary(palavras, palavrasBuscadas[i], 0, qtd - 1);
 
                         if (palavra != -1) {
                             System.out.println("A palavra " + palavras[palavra] + " foi encontrada");
                         } else {
-                            System.out.println("A palavra " + palavrasBuscadas[i] + " não foi encontrada no dicionário");
+                            System.out
+                                    .println("A palavra " + palavrasBuscadas[i] + " não foi encontrada no dicionário");
                         }
                     }
 
