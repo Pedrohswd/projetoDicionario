@@ -107,7 +107,12 @@ public class Tela {
             switch (userInput) {
                 case 1:
                     for (int i = 0; i < 10; i++) {
-                        System.out.print("A palavra " + palavras[search.sequential(palavras, palavrasBuscadas[i])] + " foi encontrada.");
+                        int palavra = search.sequential(palavras, palavrasBuscadas[i]);
+                        if (palavra != -1) {
+                            System.out.println("A palavra " + palavras[palavra] + " foi encontrada na linha " + palavra+1);
+                        } else {
+                            System.out.println("A palavra " + palavrasBuscadas[i] + " não foi encontrada no dicionário");
+                        }
                     }
 
                     // MEDIÇÃO DO TEMPO NA BUSCA SEQUENCIAL
@@ -117,14 +122,20 @@ public class Tela {
                     nt = nf - ni;
 
                     if (dt == 0) {
-                        System.out.println("-----------Essa Ordenação Demorou " + nt + " nanosegundos-----------");
+                        System.out.println("-----------Essa Busca Demorou " + nt + " nanosegundos-----------");
                     } else {
-                        System.out.println("-----------Essa Ordenação Demorou " + dt + " milisegundos-----------");
+                        System.out.println("-----------Essa Busca Demorou " + dt + " milisegundos-----------");
                     }
 
                 case 2:
                     for (int i = 0; i < 10; i++) {
-                        System.out.println("A palavra " + palavras[search.binary(palavras, palavrasBuscadas[i], 0, qtd - 1)] + " foi encontrada");
+                        int palavra = search.binary(palavras, palavrasBuscadas[i], 0, qtd - 1);
+
+                        if (palavra != -1) {
+                            System.out.println("A palavra " + palavras[palavra] + " foi encontrada na linha " + palavra+1);
+                        } else {
+                            System.out.println("A palavra " + palavrasBuscadas[i] + " não foi encontrada no dicionário");
+                        }
                     }
 
                     // MEDIÇÃO DO TEMPO NA BUSCA BINARIA
@@ -135,9 +146,9 @@ public class Tela {
                     nt = nf - ni;
 
                     if (dt == 0) {
-                        System.out.println("-----------Essa Ordenação Demorou " + nt + " nanosegundos-----------");
+                        System.out.println("-----------Essa Busca Demorou " + nt + " nanosegundos-----------");
                     } else {
-                        System.out.println("-----------Essa Ordenação Demorou " + dt + " milisegundos-----------");
+                        System.out.println("-----------Essa Busca Demorou " + dt + " milisegundos-----------");
                     }
             }
 

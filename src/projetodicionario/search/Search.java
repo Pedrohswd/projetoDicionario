@@ -29,7 +29,7 @@ public class Search {
                 return i;
             }
         }
-        throw new Exception("Element not found!");
+        return -1;
     }
 
     public int binary(String[] array, String word, int start, int end) throws Exception {
@@ -63,6 +63,6 @@ public class Search {
             return binary(array, word, (middle + 1), end);
         }
 
-        throw new Exception("Element not found!");
+        return -1;
     }
 }
