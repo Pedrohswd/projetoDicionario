@@ -114,28 +114,57 @@ public class Ordenation {
         return palavra;
     }
 
-    private int partition(String[] palavra, int left, int right) {
-        Tools tools = new Tools();
-        int pivot = tools.characterCounter(palavra[right]);
-        int i = left - 1;
+    private int partition(String[] array, int low, int high) {
+        String pivot = array[low];
+        int i = low - 1, j = high + 1;
 
-        for (int j = left; j < right; j++) {
-            int palavraJ = tools.characterCounter(palavra[j]);
-            if (palavraJ < pivot) {
+        while (true) {
+            do {
                 i++;
-                swap(palavra, i, j);
+            } while (array[i].length() < pivot.length());
+
+            do {
+                j--;
+            } while (array[j].length() > pivot.length());
+
+            if (i >= j) {
+                return j;
             }
+            swap(array, i, j);
         }
-
-        swap(palavra, i + 1, right);
-
-        return i + 1;
     }
-
-    private  void swap(String[] palavra, int i, int j) {
+    private void swap(String[] palavra, int i, int j) {
         String temp = palavra[i];
         palavra[i] = palavra[j];
         palavra[j] = temp;
     }
 
+    /*private int partition(String[] array, int low, int high) {
+        String pivot = array[low];
+        int i = low - 1, j = high + 1;
+
+        while (true) {
+            do {
+                i++;
+            } while (array[i].length() < pivot.length());
+
+            do {
+                j--;
+            } while (array[j].length() > pivot.length());
+
+            if (i >= j) {
+                return j;
+            }
+            swap(array, i, j);
+        }
+    }
+
+    public String[] quickSort(String[] array, int low, int high) {
+        if (low < high) {
+            int pivot = partition(array, low, high);
+            quickSort(array, low, pivot);
+            quickSort(array, (pivot + 1), high);
+        }
+        return array;
+    }*/
 }

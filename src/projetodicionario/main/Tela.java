@@ -72,7 +72,7 @@ public class Tela {
                     palavras = ordenation.mergeSort(palavras, 0, qtd - 1);
                     break;
                 case 4:
-                    palavras = ordenation.quickSort(palavras, 0, qtd - 1);
+                    palavras = ordenation.quickSort(palavras, qtd, qtd);
                     break;
                 default:
                     throw new AssertionError();
@@ -109,7 +109,7 @@ public class Tela {
                     for (int i = 0; i < 10; i++) {
                         int palavra = search.sequential(palavras, palavrasBuscadas[i]);
                         if (palavra != -1) {
-                            System.out.println("A palavra " + palavras[palavra] + " foi encontrada na linha " + palavra+1);
+                            System.out.println("A palavra " + palavras[palavra] + " foi encontrada");
                         } else {
                             System.out.println("A palavra " + palavrasBuscadas[i] + " não foi encontrada no dicionário");
                         }
@@ -132,7 +132,7 @@ public class Tela {
                         int palavra = search.binary(palavras, palavrasBuscadas[i], 0, qtd - 1);
 
                         if (palavra != -1) {
-                            System.out.println("A palavra " + palavras[palavra] + " foi encontrada na linha " + palavra+1);
+                            System.out.println("A palavra " + palavras[palavra] + " foi encontrada");
                         } else {
                             System.out.println("A palavra " + palavrasBuscadas[i] + " não foi encontrada no dicionário");
                         }
@@ -140,7 +140,6 @@ public class Tela {
 
                     // MEDIÇÃO DO TEMPO NA BUSCA BINARIA
                     tf = System.currentTimeMillis();
-
                     nf = System.nanoTime();
                     dt = tf - ti;
                     nt = nf - ni;

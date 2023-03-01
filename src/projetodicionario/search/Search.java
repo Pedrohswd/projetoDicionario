@@ -14,15 +14,6 @@ public class Search {
 
     Tools tool = new Tools();
 
-    /*public int sequential(String[] vetor, String palavraBuscada) throws Exception {
-
-        for (int i = 0; i < vetor.length; i++) {
-            if (palavraBuscada == vetor[i]) {
-                return i;
-            }
-        }
-        return 0;
-    }*/
     public int sequential(String[] vetor, String word) throws Exception {
         for (int i = 0; i < vetor.length; i++) {
             if (vetor[i].equalsIgnoreCase(word)) {
