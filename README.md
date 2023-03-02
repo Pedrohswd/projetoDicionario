@@ -3,14 +3,7 @@
 Este é um projeto realizado na matéria de estrutura de dados 
 Senai FATESG
 
-
-
-
-
-
-
-
-#colaboradores
-Eduardo Cândido
-Emilly Duarte
-Pedro Henrique Santos
+# colaboradores
+<p>Eduardo Cândido
+<p>Emilly Duarte
+<p>Pedro Henrique Santos
