@@ -1,7 +1,7 @@
 # projetoDicionario
 
 Este é um projeto realizado na matéria de estrutura de dados 
-Senai FATESG
+<p>Senai FATESG
 
 # colaboradores
 <p>Eduardo Cândido
