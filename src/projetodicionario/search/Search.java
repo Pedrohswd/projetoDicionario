@@ -14,44 +14,44 @@ public class Search {
 
     Tools tool = new Tools();
 
-    public int sequential(String[] vetor, String word) throws Exception {
+    public int sequential(String[] vetor, String palavraBuscada) throws Exception {
         for (int i = 0; i < vetor.length; i++) {
-            if (vetor[i].equalsIgnoreCase(word)) {
+            if (vetor[i].equalsIgnoreCase(palavraBuscada)) {
                 return i;
             }
         }
         return -1;
     }
 
-    public int binary(String[] palavra, String word, int start, int end) throws Exception {
-        if (start > end) {
+    public int binary(String[] palavra, String palavraBuscada, int inicio, int fim) throws Exception {
+        if (inicio > fim) {
             return -1;
         }
 
-        int middle = (start + end) / 2;
-        if (word.length() == palavra[middle].length()) {
-            if (word.equals(palavra[middle])) {
-                return middle;
+        int meio = (inicio + fim) / 2;
+        if (palavraBuscada.length() == palavra[meio].length()) {
+            if (palavraBuscada.equals(palavra[meio])) {
+                return meio;
             } else {
-                int i = middle;
-                while (word.length() == palavra[i].length()) {
+                int i = meio;
+                while (palavraBuscada.length() == palavra[i].length()) {
                     i++;
-                    if (word.equals(palavra[i])) {
+                    if (palavraBuscada.equals(palavra[i])) {
                         return i;
                     }
                 }
-                i = middle;
-                while (word.length() == palavra[i].length()) {
+                i = meio;
+                while (palavraBuscada.length() == palavra[i].length()) {
                     i--;
-                    if (word.equals(palavra[i])) {
+                    if (palavraBuscada.equals(palavra[i])) {
                         return i;
                     }
                 }
             }
-        } else if (word.length() < palavra[middle].length()) {
-            return binary(palavra, word, start, (middle - 1));
+        } else if (palavraBuscada.length() < palavra[meio].length()) {
+            return binary(palavra, palavraBuscada, inicio, (meio - 1));
         } else {
-            return binary(palavra, word, (middle + 1), end);
+            return binary(palavra, palavraBuscada, (meio + 1), fim);
         }
 
         return -1;

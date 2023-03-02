@@ -47,34 +47,34 @@ public class Ordenation {
         return palavra;
     }
 
-    public String[] mergeSort(String[] palavra, int start, int end) {
-        if (start < end) {
-            int middle = (start + end) / 2;
-            mergeSort(palavra, start, middle);
-            mergeSort(palavra, middle + 1, end);
-            palavra = merge(palavra, start, middle, end);
+    public String[] mergeSort(String[] palavra, int inicio, int fim) {
+        if (inicio < fim) {
+            int meio = (inicio + fim) / 2;
+            mergeSort(palavra, inicio, meio);
+            mergeSort(palavra, meio + 1, fim);
+            palavra = merge(palavra, inicio, meio, fim);
         }
         return palavra;
     }
 
-    private String[] merge(String[] palavra, int start, int middle, int end) {
+    private String[] merge(String[] palavra, int inicio, int meio, int fim) {
         Tools tools = new Tools();
-        int leftLength = middle - start + 1;
-        int rightLength = end - middle;
+        int leftLength = meio - inicio + 1;
+        int rightLength = fim - meio;
 
         String[] leftArray = new String[leftLength];
         String[] rightArray = new String[rightLength];
 
         for (int i = 0; i < leftLength; i++) {
-            leftArray[i] = palavra[start + i];
+            leftArray[i] = palavra[inicio + i];
         }
         for (int j = 0; j < rightLength; j++) {
-            rightArray[j] = palavra[middle + j + 1];
+            rightArray[j] = palavra[meio + j + 1];
         }
 
         int i = 0;
         int j = 0;
-        int k = start;
+        int k = inicio;
 
         while (i < leftLength && j < rightLength) {
             int leftArrayI = tools.characterCounter(leftArray[i]);
@@ -109,32 +109,32 @@ public class Ordenation {
         palavra[j] = temp;
     }
 
-    private int partition(String[] array, int low, int high) {
-        String pivot = array[low];
-        int i = low - 1, j = high + 1;
+    private int partition(String[] palavra, int menor, int high) {
+        String pivot = palavra[menor];
+        int i = menor - 1, j = high + 1;
 
         while (true) {
             do {
                 i++;
-            } while (array[i].length() < pivot.length());
+            } while (palavra[i].length() < pivot.length());
 
             do {
                 j--;
-            } while (array[j].length() > pivot.length());
+            } while (palavra[j].length() > pivot.length());
 
             if (i >= j) {
                 return j;
             }
-            swap(array, i, j);
+            swap(palavra, i, j);
         }
     }
 
-    public String[] quickSort(String[] array, int low, int high) {
-        if (low < high) {
-            int pivot = partition(array, low, high);
-            quickSort(array, low, pivot);
-            quickSort(array, (pivot + 1), high);
+    public String[] quickSort(String[] palavra, int menor, int maior) {
+        if (menor < maior) {
+            int pivot = partition(palavra, menor, maior);
+            quickSort(palavra, menor, pivot);
+            quickSort(palavra, (pivot + 1), maior);
         }
-        return array;
+        return palavra;
     }
 }
