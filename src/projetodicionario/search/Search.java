@@ -5,6 +5,8 @@
 package projetodicionario.search;
 
 import projetodicionario.tools.Tools;
+import projetodicionario.tree.Tree.Node;
+import projetodicionario.tree.Tree;
 
 /**
  *
@@ -13,6 +15,7 @@ import projetodicionario.tools.Tools;
 public class Search {
 
     Tools tool = new Tools();
+    Tree tree = new Tree();
 
     public int sequential(String[] vetor, String palavraBuscada) throws Exception {
         for (int i = 0; i < vetor.length; i++) {

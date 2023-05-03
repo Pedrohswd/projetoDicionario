@@ -10,6 +10,7 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 import projetodicionario.ordination.Ordenation;
 import projetodicionario.search.Search;
+import projetodicionario.tree.Tree;
 
 /**
  * InputMismatchException
@@ -18,14 +19,86 @@ import projetodicionario.search.Search;
  */
 public class Tela {
 
+    private static int userInput = 0;
+    private static String dictionary, palavraDesejada;
+    private static char letter;
+    private static Ordenation ordenation = new Ordenation();
+    private static Search search = new Search();
+    private static Scanner sc = new Scanner(System.in);
+    private static Tools tool = new Tools();
+    private static String[] palavras;
+    private static int qtd;
+
     public static void main(String[] args) throws Exception {
-        int userInput;
-        String dictionary;
-        Ordenation ordenation = new Ordenation();
-        Search search = new Search();
-        Scanner sc = new Scanner(System.in);
-        Tools tool = new Tools();
-        String[] palavras;
+        Tela tela = new Tela();
+        userInput = 0;
+        System.out.println("--------------------------Escolha com sabedoria!--------------------------");
+        System.out.println("[1] - Arvore");
+        System.out.println("[2] - Vetores");
+        System.out.print("Digite o número referente a escolha desejada: ");
+        userInput = sc.nextInt();
+        if (userInput == 1) {
+            tela.treeScrean();
+        } else {
+            tela.vector();
+        }
+    }
+
+    public void treeScrean() {
+        Tree tree = new Tree();
+        dictionary = "./src/projetodicionario/dictionary/Dicionario limpo.txt";
+        tree.verifica(dictionary);
+        tree.readTxt(dictionary);
+        while (userInput != 5) {
+            System.out.println("--------------------------Oi usuário!--------------------------");
+            System.out.println("Você está na opção de árvore... Isso me deu uma dor de cabeça legal");
+            System.out.println("Sendo assim, o que deseja agora?");
+            System.out.println("[1] - Incluir uma palavra");
+            System.out.println("[2] - Deletar uma palavra");
+            System.out.println("[3] - Procurar palavras");
+            System.out.println("[4] - Imprimir a árvore");
+            System.out.println("[5] - Sair");
+            System.out.print("Digite o número referente a escolha desejada: ");
+            userInput = sc.nextInt();
+
+            switch (userInput) {
+                case 1:
+                    System.out.println("Digite a palavra que deseja incluir: ");
+                    palavraDesejada = sc.next();
+                    tree.insert(palavraDesejada.charAt(0), palavraDesejada);
+                    break;
+                case 2:
+                    System.out.println("Digite a palavra que deseja Deletar: ");
+                    palavraDesejada = sc.next();
+                    letter = palavraDesejada.charAt(0);
+                    tree.delete(letter, palavraDesejada);
+                    break;
+                case 3:
+                    System.out.print("Digite agora 10 palavras que você deseja buscar no dicionário: ");
+                    String[] palavrasBuscadas = new String[10];
+                    for (int i = 0; i < 10; i++) {
+                        palavrasBuscadas[i] = sc.next();
+                    }
+                    for (int i = 0; i < 10; i++) {
+                        if (tree.search(palavrasBuscadas[i]) == true) {
+                            System.out.println("A palavra " + palavrasBuscadas[i] + " foi encontrada");
+                        } else {
+                            System.out.println("A palavra " + palavrasBuscadas[i] + " não foi encontrada");
+                        }
+                    }
+                    break;
+                case 4:
+                    tree.print();
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+            treeScrean();
+        }
+    }
+
+    public void vector() throws Exception {
+
         try {
             System.out.println("--------------------------Olá Humano!--------------------------");
             System.out.println("Este sistema possui a intenção de fazer busca em um dicionário.\n");
@@ -35,7 +108,6 @@ public class Tela {
             System.out.print("Digite o número referente ao dicionário desejado: ");
             userInput = sc.nextInt();
 
-            int qtd;
             if (userInput == 1) {
                 System.out.println("Dicionário PT-BR");
                 dictionary = "./src/projetodicionario/dictionary/PT-BR.txt";
@@ -169,5 +241,4 @@ public class Tela {
         }
 
     }
-
 }
