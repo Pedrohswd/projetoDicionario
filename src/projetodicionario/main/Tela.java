@@ -93,7 +93,6 @@ public class Tela {
                 default:
                     throw new AssertionError();
             }
-            treeScrean();
         }
     }
 

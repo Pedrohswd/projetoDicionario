@@ -170,26 +170,6 @@ public class Tree {
         return (n == null) ? 0 : height(n.right) - height(n.left);
     }
 
-//    public void printAVLTree(Node node, String indent, boolean last) {
-//        if (node != null) {
-//            System.out.print(indent);
-//            if (last) {
-//                System.out.print("└─");
-//                indent += "  ";
-//            } else {
-//                System.out.print("├─");
-//                indent += "│ ";
-//            }
-//            System.out.println(node.words);
-//
-//            printAVLTree(node.left, indent, false);
-//            printAVLTree(node.right, indent, true);
-//        }
-//    }
-//
-//    public void printAVLTree() {
-//        printAVLTree(root, "", true);
-//    }
     
 public void printDictionary(Node node) {
     if (node != null) {
@@ -249,27 +229,6 @@ public void print(){
         }
     }
 
-//    public boolean search(String word) {
-//        if (word == null || word.isEmpty()) {
-//            return false;
-//        }
-//        char firstLetter = word.charAt(0);
-//        Node node = find(firstLetter);
-//        int index = 1;
-//        while (node != null && index < word.length()) {
-//            char letter = word.charAt(0);
-//            if (letter == node.letter) {
-//                index++;
-//                if (index == word.length()) {
-//                    return true;
-//                }
-//                node = (letter < node.right.letter) ? node.left : node.right;
-//            } else {
-//                node = (letter < node.letter) ? node.left : node.right;
-//            }
-//        }
-//        return false;
-//    }
     public boolean search(String word) {
         char firstLetter = word.charAt(0);
         Node node = find(firstLetter);

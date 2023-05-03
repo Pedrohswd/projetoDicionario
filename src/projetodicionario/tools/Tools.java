@@ -64,13 +64,8 @@ public class Tools {
 
     public void clearTxt(String arquivo) {
         try {
-            //Cria o objeto FileWriter com o parâmetro 'false' para não acrescentar ao arquivo
             FileWriter fw = new FileWriter(arquivo, false);
-
-            //Escreve uma string vazia no arquivo para limpar todo o conteúdo anterior
             fw.write("");
-
-            //Fecha o FileWriter
             fw.close();
 
             System.out.println("Arquivo limpo com sucesso!");
