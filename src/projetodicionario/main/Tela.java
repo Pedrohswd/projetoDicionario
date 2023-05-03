@@ -49,6 +49,8 @@ public class Tela {
         dictionary = "./src/projetodicionario/dictionary/Dicionario limpo.txt";
         tree.verifica(dictionary);
         tree.readTxt(dictionary);
+        long ti, tf, tt;
+        long ni, nf, nt;
         while (userInput != 5) {
             System.out.println("--------------------------Oi usuário!--------------------------");
             System.out.println("Você está na opção de árvore... Isso me deu uma dor de cabeça legal");
@@ -80,10 +82,25 @@ public class Tela {
                         palavrasBuscadas[i] = sc.next();
                     }
                     for (int i = 0; i < 10; i++) {
+                        ti = System.currentTimeMillis(); // tempo inicial em miliseg.
+                        ni = System.nanoTime(); // tempo inicial em nanoseg.
+
                         if (tree.search(palavrasBuscadas[i]) == true) {
+                            tf = System.currentTimeMillis(); // tempo final em miliseg.
+                            nf = System.nanoTime(); // tempo final em nanoseg.
+                            tt = tf - ti; // tempo total (diferença entre final e inicial)
+                            nt = nf - ni;// tempo total (diferença entre final e inicial)
+
                             System.out.println("A palavra " + palavrasBuscadas[i] + " foi encontrada");
+                            System.out.println("E demorei " + tt + " milisegundos / " + nt + " nanosegundos");
                         } else {
+                            tf = System.currentTimeMillis(); // tempo final em miliseg.
+                            nf = System.nanoTime(); // tempo final em nanoseg.
+                            tt = tf - ti; // tempo total (diferença entre final e inicial)
+                            nt = nf - ni;// tempo total (diferença entre final e inicial)
+                            
                             System.out.println("A palavra " + palavrasBuscadas[i] + " não foi encontrada");
+                            System.out.println("E demorei " + tt + " milisegundos / " + nt + " nanosegundos");
                         }
                     }
                     break;
